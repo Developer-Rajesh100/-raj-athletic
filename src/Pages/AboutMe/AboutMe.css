@@ -1,0 +1,22 @@
+.aboutMeContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgb(238, 220, 255); */
+}
+.aboutMePhoto{
+    width: 15%;
+    border-radius: 50%;
+
+}
+.title{
+    margin-top: 20px;
+}
+.aboutMeParagraph{
+    width: 25%;
+    text-align: justify;
+    background-color: rgb(238, 220, 255);
+    padding: 15px;
+    border-radius: 10px;
+
+}
