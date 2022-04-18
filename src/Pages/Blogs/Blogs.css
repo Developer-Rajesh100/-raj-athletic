@@ -1,0 +1,12 @@
+.firstQuestion{
+    text-align: justify;
+    background-color: #d9e5ea;
+    padding: 20px;
+    border-radius: 20px;
+}
+.secondQuestion{
+    text-align: justify;
+    background-color: #f3d3f9;
+    padding: 20px;
+    border-radius: 20px;
+}

@@ -12,7 +12,7 @@ const NavBar = () => {
             <Nav>
               <div className="d-flex justify-content-around">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#link">Blogs</Nav.Link>
+                <Nav.Link href="/blogs">Blogs</Nav.Link>
                 <Nav.Link href="aboutme">About Me</Nav.Link>
                 <Nav.Link href="Signin">Sign In</Nav.Link>
                 <Nav.Link href="signup">Sign Up</Nav.Link>
