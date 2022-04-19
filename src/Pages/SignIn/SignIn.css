@@ -1,5 +1,7 @@
 .cont{
 align-items: center;
+min-height:100vh;
+margin-bottom: -100px;
 }
 .title{
     margin-bottom: 20px;
@@ -20,4 +22,7 @@ align-items: center;
 }
 .signInBtn:hover{
     background-color: #55a737;
+}
+.facebook-icon{
+    width: 45px;
 }

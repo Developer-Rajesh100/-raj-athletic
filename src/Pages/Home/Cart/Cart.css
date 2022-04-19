@@ -1,4 +1,36 @@
-.section-header{
+/* .section-header{
     text-align: center;
     color: #cc67e0;
+} */
+.cart-image{
+    width: 100%;
+    height: 200px;
+}
+.main-container{
+    /* background-color: aquamarine; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+}
+.cart{
+    width: 300px;
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center
+}
+.singel-cart{
+    background-color: #f4f2f2;
+    padding: 20px;
+    border-radius: 10px;
+}
+.cart-btn{
+    border: none;
+    background-color: #bdb6b6;
+    border-radius: 8px;
+}
+.cart-btn:hover{
+    background-color: #8b8b8b;
+    font-weight: 600;
 }

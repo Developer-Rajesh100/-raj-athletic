@@ -1,3 +1,7 @@
+.cont{
+    margin-top: 100px;
+    margin-bottom: -300px;
+}
 .firstQuestion{
     text-align: justify;
     background-color: #d9e5ea;
@@ -9,4 +13,10 @@
     background-color: #f3d3f9;
     padding: 20px;
     border-radius: 20px;
+}
+.thirdQuestion{
+    background-color: #d9d9d9;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50%;
 }

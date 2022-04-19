@@ -4,7 +4,7 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <div>
-      <Navbar sticky="top" className="navBackground" bg="" expand="lg">
+      <Navbar fixed="top" className="navBackground" bg="" expand="lg">
         <Container>
           <Navbar.Brand href="/">Raj Athletic</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

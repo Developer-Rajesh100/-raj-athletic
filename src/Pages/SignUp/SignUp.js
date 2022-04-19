@@ -2,7 +2,7 @@ import React from "react";
 import "./SignUp.css";
 const SignUp = () => {
   return (
-    <div className="con d-flex flex-column justify-content-center mt-5">
+    <div className="con d-flex flex-column justify-content-center">
       <h1 className="title">Sign Up</h1>
       <form>
         <label htmlFor="name">
@@ -38,7 +38,19 @@ const SignUp = () => {
           />
         </label>
         <br />
-        <input className="signUpBtn px-3" type="button" value="Sign Up" />
+        <div>
+          <input className="signInBtn px-3" type="button" value="Sign In" />
+          <a href="">
+            <img src="https://i.ibb.co/0ydWNnY/google-Logo-1.png" alt="" />
+          </a>
+          <a href="">
+            <img
+              className="facebook-icon"
+              src="https://i.ibb.co/Rj85LRS/Facebook-Logo-1.png"
+              alt=""
+            />
+          </a>
+        </div>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import "./App.css";
 import AboutMe from "./Pages/AboutMe/AboutMe";
 import Blogs from "./Pages/Blogs/Blogs";
 import Error from "./Pages/Error/Error";
+import Footer from "./Pages/Home/Footer/Footer";
 import Home from "./Pages/Home/Home";
 import NavBar from "./Pages/Home/NavBar/NavBar";
 import SignIn from "./Pages/SignIn/SignIn";
@@ -18,8 +19,10 @@ function App() {
         <Route path="aboutme" element={<AboutMe></AboutMe>}></Route>
         <Route path="Signin" element={<SignIn></SignIn>}></Route>
         <Route path="signup" element={<SignUp></SignUp>}></Route>
+
         <Route path="*" element={<Error></Error>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
