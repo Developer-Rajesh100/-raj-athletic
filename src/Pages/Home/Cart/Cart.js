@@ -22,7 +22,7 @@ const Cart = ({ data }) => {
             {" "}
             <small>{description} </small>{" "}
           </p>
-          <Link to={<PrivateRoute></PrivateRoute>}>
+          <Link to="/private">
             <button className="cart-btn px-4 py-1">Contract</button>
           </Link>
         </div>

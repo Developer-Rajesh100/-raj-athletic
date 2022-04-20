@@ -1,23 +1,49 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
+import auth from "../../../Firebase.Init";
 import "./NavBar.css";
 const NavBar = () => {
+  const [user] = useAuthState(auth);
   return (
     <div>
-      <Navbar fixed="top" className="navBackground" bg="" expand="lg">
+      <Navbar collapseOnSelect expand="lg" fixed="top" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Raj Athletic</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <div className="d-flex justify-content-around">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/blogs">Blogs</Nav.Link>
-                <Nav.Link href="aboutme">About Me</Nav.Link>
-                <Nav.Link href="Signin">Sign In</Nav.Link>
-                <Nav.Link href="signup">Sign Up</Nav.Link>
-              </div>
+          <Navbar.Brand as={Link} to="/">
+            Raj Athletic
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/blogs">
+                Blogs
+              </Nav.Link>
+              <Nav.Link as={Link} to="/aboutme">
+                About Me
+              </Nav.Link>
             </Nav>
+            {user ? (
+              <Nav>
+                <Nav.Link onClick={() => signOut(auth)} as={Link} to="">
+                  Sign Out
+                </Nav.Link>
+              </Nav>
+            ) : (
+              <Nav>
+                <Nav.Link
+                  as={Link}
+                  to="/login
+             "
+                >
+                  Sign In
+                </Nav.Link>
+              </Nav>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

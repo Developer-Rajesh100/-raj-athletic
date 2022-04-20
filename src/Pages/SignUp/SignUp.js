@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./SignUp.css";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../Firebase.Init";
+
 const SignUp = () => {
+  const nameRef = useRef();
+  const passwordRef = useRef();
+  const emailRef = useRef();
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const handleSubmit = (event) => {
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(email, password);
+    event.preventDefault();
+    createUserWithEmailAndPassword(email, password);
+  };
+
+  // const [loginUser, loginloading, loginerror] = useAuthState;
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
+  console.log(user);
   return (
-    <div className="con d-flex flex-column justify-content-center">
-      <h1 className="title">Sign Up</h1>
+    <div className="form-container d-flex flex-column justify-content-center">
+      <h1 className="titl">Sign Up</h1>
       <form>
         <label htmlFor="name">
           <input
+            // onBlur={(event) => handleFormInpur(event)}
+            ref={nameRef}
             className="inp form-control"
             type="text"
             name="name"
@@ -18,6 +47,8 @@ const SignUp = () => {
         <br />
         <label htmlFor="email">
           <input
+            // onBlur={(event) => handleFormInpur(event)}
+            ref={emailRef}
             className="inp form-control"
             type="email"
             name="email"
@@ -29,6 +60,8 @@ const SignUp = () => {
         <br />
         <label htmlFor="password">
           <input
+            // onBlur={(event) => handleFormInpur(event)}
+            ref={passwordRef}
             className="inp form-control"
             type="password"
             name="password"
@@ -38,8 +71,19 @@ const SignUp = () => {
           />
         </label>
         <br />
+
+        <p>
+          <Link className="text-decoration-none text-primary" to="/login">
+            Sign In
+          </Link>{" "}
+        </p>
         <div>
-          <input className="signInBtn px-3" type="button" value="Sign In" />
+          <input
+            onClick={handleSubmit}
+            className="signInBtn px-3"
+            type="button"
+            value="Sign Up"
+          />
           <a href="">
             <img src="https://i.ibb.co/0ydWNnY/google-Logo-1.png" alt="" />
           </a>

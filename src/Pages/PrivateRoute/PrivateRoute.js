@@ -2,7 +2,7 @@ import React from "react";
 import "./PrivateRoute.css";
 const PrivateRoute = () => {
   return (
-    <div>
+    <div className="cont">
       <h1 className="title">My Contract Numbrt is : 100</h1>
     </div>
   );

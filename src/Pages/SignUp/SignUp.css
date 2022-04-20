@@ -1,8 +1,8 @@
-.con{
+.form-container{
     align-items: center;
     min-height: 100vh;
     }
-    .title{
+    .titl{
         margin-bottom: 20px;
     }
     .inp{
@@ -22,3 +22,7 @@
     .signInBtn:hover{
         background-color: #55a737;
     }
+    
+    
+
+    

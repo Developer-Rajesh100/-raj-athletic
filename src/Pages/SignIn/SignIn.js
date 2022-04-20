@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../Firebase.Init";
 import "./SignIn.css";
-// import google from "../../Images/signInSignUp/googleLogo (1).png";
-// import facebook from "../../Images/signInSignUp/Facebook-Logo (1).pnggoogleLogo (1).png";
+
 const SignIn = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const passwordRef = useRef();
+  const emailRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleSubmit = (event) => {
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(email, password);
+    event.preventDefault();
+    signInWithEmailAndPassword(email, password);
+  };
+  if (user) {
+    navigate(from, { replace: true });
+  }
   return (
     <div className="cont d-flex flex-column justify-content-center">
       <h1 className="title">Sign In</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="email">
           <input
+            ref={emailRef}
             className="inp form-control"
             type="email"
             name="email"
@@ -20,6 +43,7 @@ const SignIn = () => {
         <br />
         <label htmlFor="password">
           <input
+            ref={passwordRef}
             className="inp form-control"
             type="password"
             name="password"
@@ -29,8 +53,16 @@ const SignIn = () => {
           />
         </label>
         <br />
+        <Link className="text-decoration-none text-primary" to="/signup">
+          Creat Account
+        </Link>
         <div>
-          <input className="signInBtn px-3" type="button" value="Sign In" />
+          <input
+            onClick={handleSubmit}
+            className="signInBtn px-3"
+            type="button"
+            value="Sign In"
+          />
           <a href="">
             <img src="https://i.ibb.co/0ydWNnY/google-Logo-1.png" alt="" />
           </a>
