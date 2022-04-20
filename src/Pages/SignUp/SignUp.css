@@ -22,6 +22,9 @@
     .signInBtn:hover{
         background-color: #55a737;
     }
+    .btn{
+        margin: 0;
+    }
     
     
 

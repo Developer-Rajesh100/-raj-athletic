@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div>
+    <div fixed="bottom">
       <footer>
         <p className="background text-center">
           {" "}

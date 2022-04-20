@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase.Init";
 import "./SignIn.css";
@@ -14,6 +17,8 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
 
   const handleSubmit = (event) => {
     const email = emailRef.current.value;
@@ -62,16 +67,9 @@ const SignIn = () => {
             type="button"
             value="Sign In"
           />
-          <a href="">
+          <button className="btn" onClick={() => signInWithGoogle()}>
             <img src="https://i.ibb.co/0ydWNnY/google-Logo-1.png" alt="" />
-          </a>
-          <a href="">
-            <img
-              className="facebook-icon"
-              src="https://i.ibb.co/Rj85LRS/Facebook-Logo-1.png"
-              alt=""
-            />
-          </a>
+          </button>
         </div>
       </form>
     </div>

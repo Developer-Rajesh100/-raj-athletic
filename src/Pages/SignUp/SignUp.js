@@ -1,9 +1,14 @@
 import React, { useRef } from "react";
 import "./SignUp.css";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase.Init";
 import { sendEmailVerification } from "firebase/auth";
+
+// const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
 const SignUp = () => {
   const nameRef = useRef();
@@ -11,7 +16,7 @@ const SignUp = () => {
   const emailRef = useRef();
   let navigate = useNavigate();
   let location = useLocation();
-
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
   let from = location.state?.from?.pathname || "/";
 
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -80,16 +85,10 @@ const SignUp = () => {
             type="button"
             value="Sign Up"
           />
-          <a href="">
+
+          <button onClick={() => signInWithGoogle()} className="btn">
             <img src="https://i.ibb.co/0ydWNnY/google-Logo-1.png" alt="" />
-          </a>
-          <a href="">
-            <img
-              className="facebook-icon"
-              src="https://i.ibb.co/Rj85LRS/Facebook-Logo-1.png"
-              alt=""
-            />
-          </a>
+          </button>
         </div>
       </form>
     </div>

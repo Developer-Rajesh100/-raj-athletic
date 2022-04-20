@@ -34,3 +34,10 @@
     background-color: #8b8b8b;
     font-weight: 600;
 }
+
+@media only screen and (max-width: 576px) {
+    .main-container{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
