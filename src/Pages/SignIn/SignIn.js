@@ -18,7 +18,6 @@ const SignIn = () => {
   const handleSubmit = (event) => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
     event.preventDefault();
     signInWithEmailAndPassword(email, password);
   };

@@ -19,26 +19,13 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
     event.preventDefault();
     createUserWithEmailAndPassword(email, password).then(() => {
-      console.log("Hello");
       verifyEmail();
     });
   };
-
-  // const [loginUser, loginloading, loginerror] = useAuthState;
-
-  // if (user) {
-  //   navigate(from, { replace: true });
-  // }
-  console.log(user);
   const verifyEmail = () => {
-    console.log("insideVerification");
-    console.log(auth.currentUser);
-    sendEmailVerification(auth.currentUser).then(() => {
-      console.log("Email Verification Sent");
-    });
+    sendEmailVerification(auth.currentUser).then(() => {});
   };
   return (
     <div className="form-container d-flex flex-column justify-content-center">
@@ -46,7 +33,6 @@ const SignUp = () => {
       <form>
         <label htmlFor="name">
           <input
-            // onBlur={(event) => handleFormInpur(event)}
             ref={nameRef}
             className="inp form-control"
             type="text"
@@ -59,7 +45,6 @@ const SignUp = () => {
         <br />
         <label htmlFor="email">
           <input
-            // onBlur={(event) => handleFormInpur(event)}
             ref={emailRef}
             className="inp form-control"
             type="email"
@@ -72,7 +57,6 @@ const SignUp = () => {
         <br />
         <label htmlFor="password">
           <input
-            // onBlur={(event) => handleFormInpur(event)}
             ref={passwordRef}
             className="inp form-control"
             type="password"
