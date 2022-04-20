@@ -3,11 +3,17 @@ import "./SignUp.css";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase.Init";
+import { sendEmailVerification } from "firebase/auth";
 
 const SignUp = () => {
   const nameRef = useRef();
   const passwordRef = useRef();
   const emailRef = useRef();
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const handleSubmit = (event) => {
@@ -15,19 +21,25 @@ const SignUp = () => {
     const password = passwordRef.current.value;
     console.log(email, password);
     event.preventDefault();
-    createUserWithEmailAndPassword(email, password);
+    createUserWithEmailAndPassword(email, password).then(() => {
+      console.log("Hello");
+      verifyEmail();
+    });
   };
 
   // const [loginUser, loginloading, loginerror] = useAuthState;
-  let navigate = useNavigate();
-  let location = useLocation();
 
-  let from = location.state?.from?.pathname || "/";
-
-  if (user) {
-    navigate(from, { replace: true });
-  }
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
   console.log(user);
+  const verifyEmail = () => {
+    console.log("insideVerification");
+    console.log(auth.currentUser);
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log("Email Verification Sent");
+    });
+  };
   return (
     <div className="form-container d-flex flex-column justify-content-center">
       <h1 className="titl">Sign Up</h1>
